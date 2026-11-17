@@ -51,21 +51,22 @@ A mobile-first, full-stack e-commerce web application and Progressive Web App (P
 
 ---
 
-## Production Build & Deployment
+## Production Build & Deployment (Render)
 
-1. **Type-check & build the frontend**:
-   ```bash
-   npm run lint
-   npm run build
-   ```
-2. **Start in production mode**:
-   ```bash
-   NODE_ENV=production npm start
-   ```
-   The Express server serves API routes under `/api/*`, owner uploads under `/uploads/*`, and the built Vite bundle from `dist/`.
-3. **Deployment Tips**:
-   - Mount a persistent volume on `./data` so `loraku.db`, `.jwt_secret`, and `uploads/` survive container restarts/redeploys.
-   - Always run behind HTTPS in production so `httpOnly; Secure` session cookies and PWA Service Workers work properly.
+This project is a full-stack Express + Vite application. Netlify static hosting alone cannot run the Express API or persist the SQLite database. Deploy the full app to Render using the included `render.yaml`.
+
+1. Push this project to a GitHub repository.
+2. In Render, choose **New → Blueprint**, connect the repository, and let Render read `render.yaml`.
+3. The service uses `npm install && npm run build` and starts with `npm start`.
+4. The blueprint mounts a persistent disk at `/opt/render/project/src/data`; the SQLite database, JWT secret fallback, and owner-uploaded files are stored under this directory. The configured Starter service and persistent disk are paid Render resources; do not switch to an ephemeral free service if you need saved orders and products to survive restarts.
+5. After the first deploy, open the service URL and complete the Admin setup. Set a strong `ADMIN_INITIAL_USERNAME` and `ADMIN_INITIAL_PASSWORD` in Render Environment before first startup if you want to create the first admin automatically. Keep `JWT_SECRET` private.
+
+### Important notes
+- `bun.lock` has been removed so Render uses npm instead of Bun. Run `npm install` locally once and commit the generated `package-lock.json` for a fully reproducible npm install.
+- This deployment keeps the existing `better-sqlite3` database and Express backend; it does **not** migrate the database to PostgreSQL or Turso. The Render persistent disk is what makes SQLite data durable.
+- Netlify can still host a frontend-only build, but this app's `/api/*` endpoints, admin functions, orders, and uploads will not work there unless the backend is separately hosted and the frontend API base URL is configured.
+- Always use HTTPS in production so secure session cookies and PWA service workers work correctly.
+
 
 ---
 
