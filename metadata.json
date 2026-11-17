@@ -1,0 +1,8 @@
+{
+  "name": "LORAKU DRY FRUITS",
+  "description": "Pure Indian dry fruits, healthy seeds, and special mixes from LORAKU DRY FRUITS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

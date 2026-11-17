@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="112" fill="#1B4332"/>
+  <rect x="28" y="28" width="456" height="456" rx="92" stroke="#D8C9AE" stroke-opacity="0.35" stroke-width="6"/>
+  <!-- Botanical Leaf -->
+  <path d="M270 112C195 128 152 192 162 272C198 258 242 222 270 112Z" fill="#74C69D"/>
+  <path d="M270 112C242 222 198 258 162 272" stroke="#1B4332" stroke-width="8" stroke-linecap="round"/>
+  <!-- Almond / Dry Fruit silhouette -->
+  <path d="M266 178C334 198 378 262 356 334C338 392 274 410 220 384C178 364 160 314 184 264C204 222 234 190 266 178Z" fill="#E9DEC9"/>
+  <path d="M268 212C296 238 310 284 294 334" stroke="#1B4332" stroke-width="10" stroke-linecap="round" stroke-opacity="0.45"/>
+  <path d="M236 244C254 270 260 306 248 342" stroke="#1B4332" stroke-width="8" stroke-linecap="round" stroke-opacity="0.35"/>
+</svg>
